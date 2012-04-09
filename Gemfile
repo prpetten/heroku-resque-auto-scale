@@ -5,7 +5,11 @@ source "http://rubygems.org"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
-gem 'resque', "~> 1.10.0"
+
+# Updated version to minimum required resque version to support resque-scheduler
+gem 'resque', ">= 1.20.0"
+
+
 gem 'heroku' # You will need the heroku gem for this too.
 
 group :development do

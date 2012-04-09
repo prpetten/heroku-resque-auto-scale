@@ -6,11 +6,13 @@ module HerokuResqueAutoScale
       @@heroku = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
 
       def workers
-        @@heroku.info(ENV['HEROKU_APP'])[:workers].to_i
+        # Updated for Heroku Cedar Stack
+        @@heroku.ps(ENV['HEROKU_APP']).count { |a| a["process"] =~ /worker/ }
       end
 
       def workers=(qty)
-        @@heroku.set_workers(ENV['HEROKU_APP'], qty)
+        # Updated for Heroku Cedar Stack
+        @@heroku.ps_scale(ENV['HEROKU_APP'], :type=>'worker', :qty=>qty)
       end
 
       def job_count

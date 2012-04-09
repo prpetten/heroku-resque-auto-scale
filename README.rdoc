@@ -7,7 +7,14 @@ Auto scale your resque workers on Heroku. Original code by darkhelmet:
 
 I just bundled it into a gem for easy inclusion into other projects.
 
-= Usage
+= Changes in this version were made to accommodate the following:
+
+  * Support of the Heroku Cedar stack
+  * Usage with resque-scheduler gem (resque >= 1.20.0 - min version needed fro resque-scheduler)
+
+= Usage Rails 3.x Add the following line to your Gemfile.
+
+gem 'heroku-resque-auto-scale'
 
 Once the gem is installed, simply extend your job class as follows:
 
